@@ -88,10 +88,11 @@ section{padding:clamp(64px,9vw,110px) 0}
 .vt-row__b{padding:18px 22px;color:#33333a}
 .vt-row__arrow{text-align:center;font-family:var(--f-disp);font-weight:800;font-size:22px;color:var(--amber-d)}
 .vt-ledger__note{margin-top:22px;color:var(--steel);font-size:15px}
+.vt-lead-mobile{display:none}
 
 /* ---------- HOOKS ---------- */
 .vt-hooks{background:var(--paper-2)}
-.vt-hooks__grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px}
+.vt-hooks__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px}
 .vt-hook{background:var(--ink);color:var(--paper);border-radius:16px;padding:34px 30px}
 .vt-hook__tag{display:inline-block;font-family:var(--f-disp);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--amber);padding:4px 9px;border-radius:5px;opacity:.85}
 .vt-hook h3{font-family:var(--f-disp);font-weight:800;font-size:26px;margin:16px 0 12px;letter-spacing:-.02em}
@@ -118,7 +119,7 @@ section{padding:clamp(64px,9vw,110px) 0}
 .vt-single__price{flex-shrink:0;text-align:right;border:1.5px solid var(--amber);border-radius:12px;padding:12px 20px}
 .vt-single__price b{font-family:var(--f-disp);font-weight:800;font-size:30px;color:var(--amber);display:block;line-height:1}
 .vt-single__price span{font-size:13px;color:#B9B9C2;letter-spacing:.02em}
-.vt-single__grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:38px}
+.vt-single__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
 @media(max-width:560px){.vt-single__head{flex-direction:column;align-items:flex-start;gap:14px}.vt-single__price{text-align:left}}
 .vt-card{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:32px 28px}
 .vt-card h3{font-family:var(--f-disp);font-weight:800;font-size:23px;color:var(--amber);margin-bottom:18px}
@@ -216,10 +217,15 @@ section{padding:clamp(64px,9vw,110px) 0}
   .vt-about__photo{max-width:420px}
 }
 @media(max-width:560px){
-  .vt-ledger__head,.vt-row{grid-template-columns:1fr}
-  .vt-row__arrow{display:none}
-  .vt-row__a{background:var(--paper-2);font-weight:600}
-  .vt-ledger__head span:last-child{grid-column:1}
+  /* Леджер на мобильном: каждая пара — карточка (боль -> стрелка вниз -> результат) */
+  .vt-lead-desktop{display:none}
+  .vt-lead-mobile{display:inline}
+  .vt-ledger{border:none;background:transparent;display:grid;gap:14px}
+  .vt-ledger__head{display:none}
+  .vt-row{grid-template-columns:1fr;border:1.5px solid var(--ink);border-radius:12px;overflow:hidden;background:#fff}
+  .vt-row__a{background:var(--ink);color:var(--paper);font-weight:700;padding:16px 18px}
+  .vt-row__arrow{display:block;transform:rotate(90deg);font-size:20px;padding:8px 0 4px;color:var(--amber-d)}
+  .vt-row__b{padding:14px 18px 18px;color:#33333a}
   .vt-hero__stats{gap:22px}
   .vt-hero__stats b{font-size:24px}
 }
@@ -285,13 +291,13 @@ section{padding:clamp(64px,9vw,110px) 0}
   <div class="vt-container">
     <span class="vt-eyebrow" data-n="01">Диагностика</span>
     <h2 class="vt-h2">Если сейчас так&nbsp;— вот с чем выйдете</h2>
-    <p class="vt-lead">Слева — как это ощущается изнутри. Справа — конкретный результат, с которым вы уходите после работы.</p>
+    <p class="vt-lead"><span class="vt-lead-desktop">Слева — как это ощущается изнутри. Справа — конкретный результат, с которым вы уходите после работы.</span><span class="vt-lead-mobile">Сверху — как это ощущается изнутри. Снизу — конкретный результат, с которым вы уходите после работы.</span></p>
     <div class="vt-ledger">
       <div class="vt-ledger__head"><span>Если сейчас</span><span>Результат работы</span></div>
       <!-- rows -->
-      <div class="vt-row"><div class="vt-row__a">Сложные отношения в команде или с руководителем, карьерный тупик</div><div class="vt-row__arrow">→</div><div class="vt-row__b">Понятная стратегия: что делать, куда идти, какие варианты выхода — с плюсами и минусами</div></div>
+      <div class="vt-row"><div class="vt-row__a">Сложные отношения в команде или с руководителем, карьерный тупик</div><div class="vt-row__arrow">→</div><div class="vt-row__b">Понятный сценарий выхода: что делать, какие варианты у вас реально есть и чем вы за каждый из них платите</div></div>
       <div class="vt-row"><div class="vt-row__a">Риск увольнения или сокращения</div><div class="vt-row__arrow">→</div><div class="vt-row__b">Экологичный выход с чистой репутацией и готовой стратегией поиска — или ротация внутри компании</div></div>
-      <div class="vt-row"><div class="vt-row__a">Хаотичный поиск без офферов, первый поиск или поиск после долгого перерыва</div><div class="vt-row__arrow">→</div><div class="vt-row__b">Чёткий алгоритм под рынок и роль, повышающий вероятность дойти до оффера</div></div>
+      <div class="vt-row"><div class="vt-row__a">Хаотичный поиск без офферов, первый поиск или поиск после долгого перерыва</div><div class="vt-row__arrow">→</div><div class="vt-row__b">Стратегия поиска под ваш рынок и уровень: куда идти, что менять и где у вас ломается путь до оффера</div></div>
       <div class="vt-row"><div class="vt-row__a">Хотите сменить индустрию или профессию, но не понимаете как и чего хотите</div><div class="vt-row__arrow">→</div><div class="vt-row__b">Ясность цели, карта сильных сторон и зон роста, пошаговый план перехода</div></div>
       <div class="vt-row"><div class="vt-row__a">Ощущение «потолка», не понимаете, как вырасти в доходе или роли</div><div class="vt-row__arrow">→</div><div class="vt-row__b">Стратегия перехода на новый уровень, сильное позиционирование, уверенное интервью на большие деньги</div></div>
       <div class="vt-row"><div class="vt-row__a">Хотите стать руководителем</div><div class="vt-row__arrow">→</div><div class="vt-row__b">Стратегия получения первой руководящей роли, план входа в роль и гайды по работе с командой</div></div>
@@ -304,13 +310,12 @@ section{padding:clamp(64px,9vw,110px) 0}
 <!-- ============ НОВЫЕ ПРОДУКТЫ / КРЮЧКИ ============ -->
 <section class="vt-hooks">
   <div class="vt-container">
-    <span class="vt-eyebrow" data-n="02">Для сильных специалистов</span>
-    <h2 class="vt-h2">Два тупика, из&nbsp;которых я вывожу чаще всего</h2>
+    <span class="vt-eyebrow" data-n="02">Частые тупики</span>
+    <h2 class="vt-h2">Тупики, из&nbsp;которых я вывожу чаще всего</h2>
     <div class="vt-hooks__grid">
       <article class="vt-hook">
-        <span class="vt-hook__tag">черновая карточка · возможна доработка</span>
         <h3>Разбор карьерного тупика</h3>
-        <p>Для тех, у кого уже есть нормальная карьера, но движение сломалось. Раскладываю ситуацию по слоям: деньги, статус, усталость, рынок, реальная сила, ограничения — и показываю, где вы застряли на самом деле.</p>
+        <p>Для тех, у кого карьера уже есть, а движение дальше сломалось. Разбираю ситуацию по слоям: деньги, статус, усталость, рынок, реальная сила, ограничения — и показываю, где у вас не «период», а конкретный карьерный тупик.</p>
         <ul>
           <li>диагноз: где реальная причина тупика</li>
           <li>2–3 реалистичных сценария без романтизации</li>
@@ -319,14 +324,22 @@ section{padding:clamp(64px,9vw,110px) 0}
         </ul>
       </article>
       <article class="vt-hook">
-        <span class="vt-hook__tag">черновая карточка · возможна доработка</span>
         <h3>Проверка на следующий уровень</h3>
-        <p>Для тех, кто претендует на senior / lead / head, но рынок не пускает. Смотрю на вас глазами рынка и честно калибрую: тянет ли уровень — или дело в подаче, цели и стратегии.</p>
+        <p>Смотрю на вас глазами рынка и честно калибрую: вы уже тянете на следующий уровень или пока упираетесь в подачу, цель, логику перехода или реальный разрыв по опыту.</p>
         <ul>
           <li>честная оценка вашего рыночного уровня</li>
           <li>где именно разрыв: опыт, упаковка, логика перехода</li>
           <li>роли «реально сейчас» и «после усиления»</li>
           <li>план, как дойти до следующего уровня</li>
+        </ul>
+      </article>
+      <article class="vt-hook">
+        <h3>Менторинг: рост, переходы и сложные кейсы в HR</h3>
+        <p>Для HR-специалистов и карьерных консультантов, у которых есть профессиональный тупик: сложный кейс с бизнесом, переход в новую роль, непонятный вектор роста, выгорание от текущей позиции или задача, которую не хочется разруливать в одиночку.</p>
+        <ul>
+          <li>диагноз по ситуации: где именно разрыв — в роли, уровне, процессе, коммуникации или карьерной логике</li>
+          <li>1–2 сценария решения и цена каждого</li>
+          <li>карта развития или перехода</li>
         </ul>
       </article>
     </div>
@@ -367,13 +380,13 @@ section{padding:clamp(64px,9vw,110px) 0}
         <h3>Для специалистов</h3>
         <ul>
           <li>Аудит стратегии поиска работы под рынок&nbsp;2026</li>
-          <li>Экспресс-оценка сильных сторон и гипотезы для перехода в другую роль или отрасль</li>
-          <li>Разбор резюме / LinkedIn / позиционирования</li>
+          <li>Разбор карьерной ситуации и вектора движения</li>
+          <li>Переход в новую роль или индустрию: сильные стороны и реальные сценарии</li>
+          <li>Резюме / LinkedIn / позиционирование</li>
           <li>Репетиция собеседования на русском или английском</li>
-          <li>Аудит карьерной ситуации и вектор дальнейшего движения</li>
-          <li>Помощь с решением об уходе: как договориться, какой оффер выбрать</li>
+          <li>Решение об уходе: как договориться, что выбрать, как не сжечь репутацию</li>
         </ul>
-        <p class="vt-card__for"><b>Кому:</b> нет офферов при активном поиске; непонятно, как сменить роль или индустрию; конфликт, стагнация, выбор оффера.</p>
+        <p class="vt-card__for"><b>Кому:</b> если нет офферов, непонятно как менять роль или индустрию, есть конфликт, стагнация или сложный выбор.</p>
       </div>
       <div class="vt-card">
         <h3>Для руководителей</h3>
@@ -384,7 +397,19 @@ section{padding:clamp(64px,9vw,110px) 0}
           <li>План входа в роль для молодых руководителей</li>
           <li>Аудит и перестройка процессов работы с командой: подбор, адаптация, развитие, мотивация, кадровый резерв</li>
         </ul>
-        <p class="vt-card__for"><b>Кому:</b> хотите перейти на руководящую роль; уже руководитель, но команда не слушается; переросли роль, но не повышают.</p>
+        <p class="vt-card__for"><b>Кому:</b> хотите перейти на руководящую роль; уже руководитель, но команда буксует; переросли роль, но не повышают.</p>
+      </div>
+      <div class="vt-card">
+        <h3>Для HR</h3>
+        <ul>
+          <li>Конфликт с бизнесом или руководителем</li>
+          <li>Увольнение, удержание, low performer, неприятный разговор</li>
+          <li>Переход из рекрутмента в HRBP / из HRBP в Head of HR / из операционки в стратегический контур</li>
+          <li>Вход в HR из другой функции</li>
+          <li>Затык в найме, адаптации, performance, talent, оргструктуре</li>
+          <li>Выгорание и развилка «остаться / перестроить / выйти»</li>
+        </ul>
+        <p class="vt-card__for"><b>Кому:</b> сложный кейс, карьерный тупик внутри HR, переходите в новую роль, выгорание или непонятный следующий шаг.</p>
       </div>
     </div>
     <p class="vt-single__res"><b>Результат разовой:</b> 1–2 сценария развития событий с плюсами и рисками + конкретный план из точки А в точку Б. Дальше — ваш выбор: делать самому или продолжить в пакете.</p>
@@ -400,9 +425,9 @@ section{padding:clamp(64px,9vw,110px) 0}
 
     <div class="vt-pkgs__grid">
       <article class="vt-pkg">
-        <header><h3>Карьера 2.0</h3><span class="vt-pkg__price">45 000&nbsp;₽</span></header>
+        <header><h3>Следующий карьерный шаг</h3><span class="vt-pkg__price">45 000&nbsp;₽</span></header>
         <p class="vt-pkg__meta">3 сессии по 1,5 часа</p>
-        <p class="vt-pkg__desc">Из тупика — в понятную стратегию роста. Диагностика, опросники Gallup StrengthsFinder и «Якоря Шейна» (входят в стоимость), сильные стороны, сценарии перехода и индивидуальный план развития.</p>
+        <p class="vt-pkg__desc">Для тех, у кого в карьере накопилось слишком много шума: усталость, сомнения, желание сменить вектор, ощущение пустоты при внешне нормальных результатах. Разбираем, где у вас реально тупик, какие сценарии выхода есть и какой из них стоит брать в работу сейчас.</p>
         <div class="vt-pkg__out">
           <span class="vt-pkg__out-l">На выходе</span>
           <ul>
@@ -419,7 +444,7 @@ section{padding:clamp(64px,9vw,110px) 0}
       <article class="vt-pkg">
         <header><h3>Выход из компании</h3><span class="vt-pkg__price">65 000&nbsp;₽</span></header>
         <p class="vt-pkg__meta">7 сессий по 1 часу + чат</p>
-        <p class="vt-pkg__desc">Остаёмся или выходим — считаем оба сценария. Резюме и LinkedIn под позиционирование, стратегия разговора о ротации или расставании, репетиция собеседований, ваши права и переговорная позиция.</p>
+        <p class="vt-pkg__desc">Не выходим из компании на эмоциях. Считаем оба сценария: оставаться, договариваться о ротации или выходить с чистой репутацией и рабочей стратегией.</p>
         <div class="vt-pkg__out">
           <span class="vt-pkg__out-l">На выходе</span>
           <ul>
@@ -437,7 +462,7 @@ section{padding:clamp(64px,9vw,110px) 0}
       <article class="vt-pkg">
         <header><h3>Поиск работы</h3><span class="vt-pkg__price">65 000&nbsp;₽</span></header>
         <p class="vt-pkg__meta">5 сессий по 1 часу + чат</p>
-        <p class="vt-pkg__desc">Аудит карьеры и стратегии поиска, позиционирование, резюме и LinkedIn, целевые роли и компании, сопроводительное письмо, поиск контактов, репетиция интервью, план на 90 дней.</p>
+        <p class="vt-pkg__desc">Выходите на рынок впервые, после долгого перерыва или ищете давно, а конверсия из просмотров в интервью и офферы слабая.</p>
         <div class="vt-pkg__out">
           <span class="vt-pkg__out-l">На выходе</span>
           <ul>
@@ -453,7 +478,7 @@ section{padding:clamp(64px,9vw,110px) 0}
       </article>
 
       <article class="vt-pkg">
-        <header><h3>Руководитель в текущей компании</h3><span class="vt-pkg__price">65 000&nbsp;₽</span></header>
+        <header><h3>Рост до руководителя внутри компании</h3><span class="vt-pkg__price">65 000&nbsp;₽</span></header>
         <p class="vt-pkg__meta">5 сессий по 1 часу + чат</p>
         <p class="vt-pkg__desc">Готовим переход с линейной роли на первую руководящую внутри компании: оцифровка достижений, репетиция разговора с руководителем, работа с возражениями, план на первые 90 дней и гайды по команде.</p>
         <div class="vt-pkg__out">
@@ -470,8 +495,26 @@ section{padding:clamp(64px,9vw,110px) 0}
         <a class="vt-btn vt-btn--dark vt-pkg__btn" href="#vt-lead">Обсудить пакет</a>
       </article>
 
+      <article class="vt-pkg">
+        <header><h3>Пересборка роли в HR</h3><span class="vt-pkg__price">65 000&nbsp;₽</span></header>
+        <p class="vt-pkg__meta">5 сессий по 1 часу + чат</p>
+        <p class="vt-pkg__desc">Для HR-специалистов и карьерных консультантов, у которых запрос не на один разговор, а на переход, пересборку или сложную рабочую ситуацию, которую нужно пройти до результата.</p>
+        <div class="vt-pkg__out">
+          <span class="vt-pkg__out-l">На выходе</span>
+          <ul>
+            <li>понятная стратегия движения: куда идти, что не тащить в себя и какой сценарий сейчас основной</li>
+            <li>пошаговый план действий под ваш запрос</li>
+            <li>разбор рисков, ограничений и слабых мест, которые могут сломать переход</li>
+            <li>рекомендации, что усиливать в опыте, позиции и навыках</li>
+            <li>при необходимости — позиционирование под новую роль, логика перехода и план развития</li>
+          </ul>
+        </div>
+        <p class="vt-pkg__for">Уперлись в потолок в HR и не знаете, куда расти; хотите сменить HR-функцию или перейти в HR из бизнеса; не тянете сложный кейс в одиночку; думаете о выходе в смежный трек.</p>
+        <a class="vt-btn vt-btn--dark vt-pkg__btn" href="#vt-lead">Обсудить пакет</a>
+      </article>
+
       <article class="vt-pkg vt-pkg--flag">
-        <header><h3>Становимся руководителем</h3><span class="vt-pkg__price">100 000&nbsp;₽</span></header>
+        <header><h3>Первая руководящая роль</h3><span class="vt-pkg__price">100 000&nbsp;₽</span></header>
         <p class="vt-pkg__meta">7 сессий по 1 часу + чат · максимальный</p>
         <p class="vt-pkg__desc">Полный переход на руководящую роль через рынок: позиционирование и резюме под руководителя, стратегия поиска, управленческие кейсы и яркая самопрезентация, план входа в роль и гайды по работе с командой. +2 бонусные сессии.</p>
         <div class="vt-pkg__out">
@@ -623,6 +666,43 @@ section{padding:clamp(64px,9vw,110px) 0}
     document.getElementById('vt-form-ok').hidden=false;
     f.querySelector('button[type=submit]').textContent='Отправлено ✓';
   });
+})();
+</script>
+<style>
+.vt-fab{position:fixed;right:20px;bottom:20px;z-index:900;display:flex;align-items:center;gap:10px;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s ease,transform .25s ease,visibility .25s}
+.vt-fab.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
+.vt-fab__cta{font-family:var(--f-disp);font-weight:700;font-size:15px;background:var(--amber);color:var(--ink);border:none;border-radius:12px;padding:14px 22px;cursor:pointer;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.vt-fab__cta:hover{background:var(--amber-d)}
+.vt-fab__top{width:46px;height:46px;flex-shrink:0;border-radius:12px;background:var(--ink);color:var(--paper);border:1.5px solid var(--amber);cursor:pointer;font-size:20px;line-height:1;display:grid;place-items:center;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.vt-fab__top:hover{background:var(--amber);color:var(--ink)}
+@media(max-width:560px){
+  .vt-fab{right:14px;bottom:14px;gap:8px}
+  .vt-fab__cta{font-size:14px;padding:13px 18px}
+  .vt-fab__top{width:44px;height:44px}
+}
+</style>
+<div class="vt-fab" id="vt-fab" aria-hidden="true">
+  <a class="vt-fab__cta" href="#vt-lead">Написать запрос</a>
+  <button class="vt-fab__top" id="vt-fab-top" aria-label="Наверх" type="button">↑</button>
+</div>
+<script>
+(function(){
+  var fab=document.getElementById('vt-fab');
+  var top=document.getElementById('vt-fab-top');
+  var lead=document.getElementById('vt-lead');
+  if(!fab) return;
+  top&&top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  function onScroll(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    // показываем после первого экрана
+    var show=y>600;
+    // прячем, когда форма уже видна на экране
+    if(lead){var r=lead.getBoundingClientRect();if(r.top< window.innerHeight*0.85 && r.bottom>0) show=false;}
+    fab.classList.toggle('is-visible',show);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  onScroll();
 })();
 </script>
 </body></html>
